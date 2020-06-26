@@ -13,6 +13,15 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css"
     />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/lib..." />
+    <style>
+      body {
+        background-color: aqua;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-size: cover;
+        position: relative;
+      }
+    </style>
   </head>
 
   <div id="particles-js"></div>
@@ -20,8 +29,8 @@
     <header>
       <nav>
         <div class="row clearfix">
-          <img src="tsist.png" class="logo" />
-          <img src="ts.png" class="log" />
+          <img src="../img/tsist.png" class="logo" />
+          <img src="../img/ts.png" class="log" />
           <!-- <ul class="main-nav animated slideInDown">
             <li>
               <a href="index.html">
@@ -58,161 +67,43 @@
           </div>
         </div>
       </div>
-      <script type="text/javascript">
-        var count = new Date("August 7,2020 00:00:00").getTime();
-        var x = setInterval(function () {
-          var now = new Date().getTime();
-          var d = count - now;
 
-          var days = Math.floor(d / (1000 * 60 * 60 * 24));
-          var hours = Math.floor(
-            (d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-          );
-          var minutes = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
-          var seconds = Math.floor((d % (1000 * 60)) / 1000);
-
-          document.getElementById("days").innerHTML = days;
-          document.getElementById("hours").innerHTML = hours;
-          document.getElementById("minutes").innerHTML = minutes;
-          document.getElementById("seconds").innerHTML = seconds;
-
-          if (d <= 0) {
-            clearInterval(x);
-          }
-        }, 1000);
-      </script>
-
-      <div class="main-head">
-        <center>
-          <span class="colorChange">TECHNOSUMMIT 2020</span><br />
-        </center>
-      </div>
-      <div class="main-header">
+      <center><img src="../img/tran.png" style="width: 740px;" /></center>
+      <center>
         <h1>
           <!-- <span class="colorChange">TECHNOSUMMIT 2020</span><br /> -->
           SATHYABAMA INSTITUTE OF SCIENCE AND TECHNOLOGY
         </h1>
+      </center>
+      <center>(DEEMED TO BE UNIVERSITY)</center>
+
+      <center>
         <h2>
           A National Level Annual Technical Fest On Virtual Platform<br />
           7th and 8th August 2020
         </h2>
-        <br />
-
-        <a href="nav.html" class="btn btn-first">Click Here</a>
-        <a href="about.html" class="btn btn-nav">SHOW MORE</a>
-      </div>
-      z
+      </center>
     </header>
   </body>
-  <script>
-    particlesJS("particles-js", {
-      particles: {
-        number: {
-          value: 80,
-          density: {
-            enable: true,
-            value_area: 800,
-          },
-        },
-        color: {
-          value: ["#2EB67D", "#ECB22E", "#E01E5B", "#36C5F0"],
-        },
-        shape: {
-          type: ["circle"],
-          stroke: {
-            width: 0,
-            color: "#fff",
-          },
-          polygon: {
-            nb_sides: 5,
-          },
-          image: {
-            width: 100,
-            height: 100,
-          },
-        },
-        opacity: {
-          value: 1,
-          random: false,
-          anim: {
-            enable: false,
-            speed: 1,
-            opacity_min: 0.1,
-            sync: false,
-          },
-        },
-        size: {
-          value: 8,
-          random: true,
-          anim: {
-            enable: false,
-            speed: 10,
-            size_min: 10,
-            sync: false,
-          },
-        },
-        line_linked: {
-          enable: true,
-          distance: 150,
-          color: "#808080",
-          opacity: 0.9,
-          width: 1,
-        },
-        move: {
-          enable: true,
-          speed: 5,
-          direction: "none",
-          random: false,
-          straight: false,
-          out_mode: "out",
-          bounce: false,
-          attract: {
-            enable: false,
-            rotateX: 600,
-            rotateY: 1200,
-          },
-        },
-      },
-      interactivity: {
-        detect_on: "canvas",
-        events: {
-          onhover: {
-            enable: true,
-            mode: "grab",
-          },
-          onclick: {
-            enable: true,
-            mode: "push",
-          },
-          resize: true,
-        },
-        modes: {
-          grab: {
-            distance: 140,
-            line_linked: {
-              opacity: 1,
-            },
-          },
-          bubble: {
-            distance: 400,
-            size: 40,
-            duration: 2,
-            opacity: 8,
-            speed: 3,
-          },
-          repulse: {
-            distance: 200,
-            duration: 0.4,
-          },
-          push: {
-            particles_nb: 4,
-          },
-          remove: {
-            particles_nb: 2,
-          },
-        },
-      },
-      retina_detect: true,
-    });
+  <script type="text/javascript">
+    var count = new Date("August 7,2020 00:00:00").getTime();
+    var x = setInterval(function () {
+      var now = new Date().getTime();
+      var d = count - now;
+
+      var days = Math.floor(d / (1000 * 60 * 60 * 24));
+      var hours = Math.floor((d % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+      var minutes = Math.floor((d % (1000 * 60 * 60)) / (1000 * 60));
+      var seconds = Math.floor((d % (1000 * 60)) / 1000);
+
+      document.getElementById("days").innerHTML = days;
+      document.getElementById("hours").innerHTML = hours;
+      document.getElementById("minutes").innerHTML = minutes;
+      document.getElementById("seconds").innerHTML = seconds;
+
+      if (d <= 0) {
+        clearInterval(x);
+      }
+    }, 1000);
   </script>
 </html>
