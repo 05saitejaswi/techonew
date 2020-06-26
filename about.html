@@ -1,0 +1,916 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>
+      hasdj
+    </title>
+    <script src="https://cdn.jsdelivr.net/npm/particles.js@2.0.0/particles.min.js"></script>
+    <style>
+      body {
+        height: 1000px;
+        background-color: rgb(20, 20, 20);
+      }
+      * {
+        margin: 0;
+        padding: 0;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+      }
+
+      h1 {
+        font-size: 2.5rem;
+        font-family: "Montserrat";
+        font-weight: normal;
+        color: #444;
+        text-align: center;
+      }
+
+      .wrapper {
+        width: 90%;
+        margin: 0 auto;
+        max-width: 80rem;
+      }
+
+      .cols {
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: flex;
+        -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+        -webkit-box-pack: center;
+        -ms-flex-pack: center;
+        justify-content: center;
+      }
+
+      .col {
+        width: calc(25% - 2rem);
+        margin: 1rem;
+        cursor: pointer;
+      }
+
+      .container {
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+        -webkit-perspective: 1000px;
+        perspective: 1000px;
+      }
+
+      .front,
+      .back {
+        background-size: cover;
+        background-position: center;
+        -webkit-transition: -webkit-transform 0.7s
+          cubic-bezier(0.4, 0.2, 0.2, 1);
+        transition: -webkit-transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+        -o-transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+        transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+        transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1),
+          -webkit-transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        text-align: center;
+        min-height: 280px;
+        height: auto;
+        border-radius: 10px;
+        color: #fff;
+        font-size: 1.5rem;
+      }
+
+      .back {
+        background: #b8e907;
+        background: -webkit-linear-gradient(45deg, #cedce7 0%, #596a72 100%);
+        background: -o-linear-gradient(45deg, #cedce7 0%, #596a72 100%);
+        background: linear-gradient(45deg, #dd1da3 0%, #29bd3d 100%);
+      }
+
+      .front:after {
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        width: 100%;
+        height: 100%;
+        content: "";
+        display: block;
+        opacity: 0.6;
+        background-color: #000;
+        -webkit-backface-visibility: hidden;
+        backface-visibility: hidden;
+        border-radius: 10px;
+      }
+      .container:hover .front,
+      .container:hover .back {
+        -webkit-transition: -webkit-transform 0.7s
+          cubic-bezier(0.4, 0.2, 0.2, 1);
+        transition: -webkit-transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+        -o-transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+        transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+        transition: transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1),
+          -webkit-transform 0.7s cubic-bezier(0.4, 0.2, 0.2, 1);
+      }
+
+      .back {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+      }
+
+      .inner {
+        -webkit-transform: translateY(-50%) translateZ(60px) scale(0.94);
+        transform: translateY(-50%) translateZ(60px) scale(0.94);
+        top: 50%;
+        position: absolute;
+        left: 0;
+        width: 100%;
+        padding: 2rem;
+        -webkit-box-sizing: border-box;
+        box-sizing: border-box;
+        outline: 1px solid transparent;
+        -webkit-perspective: inherit;
+        perspective: inherit;
+        z-index: 2;
+      }
+
+      .container .back {
+        -webkit-transform: rotateY(180deg);
+        transform: rotateY(180deg);
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+      }
+
+      .container .front {
+        -webkit-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+      }
+
+      .container:hover .back {
+        -webkit-transform: rotateY(0deg);
+        transform: rotateY(0deg);
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+      }
+
+      .container:hover .front {
+        -webkit-transform: rotateY(-180deg);
+        transform: rotateY(-180deg);
+        -webkit-transform-style: preserve-3d;
+        transform-style: preserve-3d;
+      }
+
+      .front .inner p {
+        font-size: 2rem;
+        margin-bottom: 2rem;
+        position: relative;
+      }
+
+      .front .inner p:after {
+        content: "";
+        width: 4rem;
+        height: 2px;
+        position: absolute;
+        background: #1dfa30;
+        display: block;
+        left: 0;
+        right: 0;
+        margin: 0 auto;
+        bottom: -0.75rem;
+      }
+
+      .front .inner span {
+        color: rgb(44, 204, 92);
+        font-family: "Montserrat";
+        font-weight: 300;
+      }
+
+      @media screen and (max-width: 64rem) {
+        .col {
+          width: calc(33.333333% - 2rem);
+        }
+      }
+
+      @media screen and (max-width: 48rem) {
+        .col {
+          width: calc(50% - 2rem);
+        }
+      }
+
+      @media screen and (max-width: 32rem) {
+        .col {
+          width: 100%;
+          margin: 0 0 2rem 0;
+        }
+      }
+      .button {
+        background-color: #4caf50;
+        border: none;
+        color: white;
+        padding: 15px 32px;
+        text-align: center;
+        text-decoration: none;
+        display: inline-block;
+        font-size: 16px;
+        margin: 4px 2px;
+        cursor: pointer;
+      }
+
+      body {
+        margin: 0;
+      }
+
+      #particles-js {
+        position: absolute;
+        height: 100%;
+        width: 100%;
+      }
+
+      .text {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 200px;
+        width: 300px;
+        top: calc(50% - 100px);
+        left: calc(50% - 150px);
+      }
+
+      .img {
+        display: inline-block;
+        height: 100px;
+        z-index: 100;
+      }
+      .column12 {
+        float: left;
+        width: 80%;
+      }
+
+      /* Clear floats after the columns */
+      .row:after {
+        content: "";
+        display: table;
+        clear: both;
+      }
+      .btn {
+  color: #fff;
+  display: inline-block;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 90%;
+  font-weight: 100px;
+  padding: 10px 30px;
+  border-radius: 200px;
+  transition: background-color 0.2s, border 0.2s, color 0.2s;
+}
+.btn-first {
+  background-color: transparent;
+  color: #bf55ec;
+  margin-right: 15px;
+  border: 1px solid #bf55ec;
+}
+.btn-first:hover {
+  background-color: #fff;
+}
+.btn-nav {
+  background-color: transparent;
+  color: #fff;
+  margin-right: 15px;
+  border: 1px solid #fff;
+}
+.btn-nav:hover {
+  background-color: #bf55ec;
+}
+    </style>
+  </head>
+  <body>
+    <div class="row">
+      <div class="column12">
+        <h1
+          style="
+            font-size: 100px;
+            font-family:BrushScript MT ;
+            color: aliceblue;
+            text-shadow: 2px 6px rgb(36, 148, 46);
+          "
+        >
+          <center>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Event Names</center>
+        </h1>
+      </div>
+      <br>
+      <br>
+      <a href="nav.html" class="btn btn-first">Click Here</a>
+      </div>
+    </div>
+
+    <div class="text"></div>
+    <div id="particles-js"></div>
+    <div class="wrapper">
+      <div class="cols">
+        <div class="col" ontouchstart="this.classList.toggle('hover');">
+          <div class="container">
+            <div
+              class="front"
+              style="background-image: url(https://unsplash.it/500/500/);"
+            >
+              <div class="inner">
+                <p>ROBOKART</p>
+                <span>robotics</span>
+              </div>
+            </div>
+            <div class="back">
+              <div class="inner">
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Alias cum repellat velit quae suscipit c.
+                </p>
+
+                <a href="tech.html"
+                  ><button type="button" class="button">Click Me!</button></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col" ontouchstart="this.classList.toggle('hover');">
+          <div class="container">
+            <div class="front" style="url(https://unsplash.it/511/511/)">
+              <div class="inner">
+                <p>BLIND CODING</p>
+                <span> microsoft</span>
+              </div>
+            </div>
+            <div class="back">
+              <div class="inner">
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Alias cum repellat velit quae suscipit c.
+                </p>
+                <a href="tech.html"
+                  ><button type="button" class="button">Click Me!</button></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col" ontouchstart="this.classList.toggle('hover');">
+          <div class="container">
+            <div
+              class="front"
+              style="background-image: url(https://unsplash.it/502/502/);"
+            >
+              <div class="inner">
+                <p>Math-Mania</p>
+                <span>Mathematics club</span>
+              </div>
+            </div>
+            <div class="back">
+              <div class="inner">
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Alias cum repellat velit quae suscipit c.
+                </p>
+                <a href="tech.html"
+                  ><button type="button" class="button">Click Me!</button></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col" ontouchstart="this.classList.toggle('hover');">
+          <div class="container">
+            <div
+              class="front"
+              style="background-image: url(https://unsplash.it/503/503/);"
+            >
+              <div class="inner">
+                <p>Eco-Topia</p>
+                <span>ECO club</span>
+              </div>
+            </div>
+            <div class="back">
+              <div class="inner">
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Alias cum repellat velit quae suscipit c.
+                </p>
+                <a href="tech.html"
+                  ><button type="button" class="button">Click Me!</button></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col" ontouchstart="this.classList.toggle('hover');">
+          <div class="container">
+            <div
+              class="front"
+              style="
+                background-image: url(https://unsplash.it/504/504/;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+              "
+            >
+              <div class="inner">
+                <p>CIRCUITRONICS</p>
+                <span>Hardware Club</span>
+              </div>
+            </div>
+            <div class="back">
+              <div class="inner">
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Alias cum repellat velit quae suscipit c.
+                </p>
+                <a href="tech.html"
+                  ><button type="button" class="button">Click Me!</button></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col" ontouchstart="this.classList.toggle('hover');">
+          <div class="container">
+            <div
+              class="front"
+              style="background-image: url(https://unsplash.it/506/506/);"
+            >
+              <div class="inner">
+                <p>SCIENTIA</p>
+                <span>Science club</span>
+              </div>
+            </div>
+            <div class="back">
+              <div class="inner">
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Alias cum repellat velit quae suscipit c.
+                </p>
+                <a href="tech.html"
+                  ><button type="button" class="button">Click Me!</button></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col" ontouchstart="this.classList.toggle('hover');">
+          <div class="container">
+            <div
+              class="front"
+              style="background-image: url(https://unsplash.it/506/506/);"
+            >
+              <div class="inner">
+                <p>Code-Vita</p>
+                <span> Innovation Club</span>
+              </div>
+            </div>
+            <div class="back">
+              <div class="inner">
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Alias cum repellat velit quae suscipit c.
+                </p>
+                <a href="tech.html"
+                  ><button type="button" class="button">Click Me!</button></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col" ontouchstart="this.classList.toggle('hover');">
+          <div class="container">
+            <div
+              class="front"
+              style="background-image: url(https://unsplash.it/508/508/);"
+            >
+              <div class="inner">
+                <p>CONCEPT</p>
+                <span>Encore Club</span>
+              </div>
+            </div>
+            <div class="back">
+              <div class="inner">
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Alias cum repellat velit quae suscipit c.
+                </p>
+                <a href="tech.html"
+                  ><button type="button" class="button">Click Me!</button></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="text"></div>
+    <div id="particles-js"></div>
+    <div class="wrapper">
+      <div class="cols">
+        <div class="col" ontouchstart="this.classList.toggle('hover');">
+          <div class="container">
+            <div class="front" style="background-image: url(../img/free.jpg);">
+              <div class="inner">
+                <p>SEED YOUR STARTUP</p>
+                <span>EDC Club </span>
+              </div>
+            </div>
+            <div class="back">
+              <div class="inner">
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Alias cum repellat velit quae suscipit c.
+                </p>
+                <a href="tech.html"
+                  ><button type="button" class="button">Click Me!</button></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col" ontouchstart="this.classList.toggle('hover');">
+          <div class="container">
+            <div class="front" style="url(../img/free.jpg)">
+              <div class="inner">
+                <p>COVID-A-THON</p>
+                <span>CSE club</span>
+              </div>
+            </div>
+            <div class="back">
+              <div class="inner">
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Alias cum repellat velit quae suscipit c.
+                </p>
+                <a href="tech.html"
+                  ><button type="button" class="button">Click Me!</button></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col" ontouchstart="this.classList.toggle('hover');">
+          <div class="container">
+            <div class="front" style="background-image: url(../img/free.jpg);">
+              <div class="inner">
+                <p>D & D</p>
+                <span>Dr.Kalam Club</span>
+              </div>
+            </div>
+            <div class="back">
+              <div class="inner">
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Alias cum repellat velit quae suscipit c.
+                </p>
+                <a href="tech.html"
+                  ><button type="button" class="button">Click Me!</button></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col" ontouchstart="this.classList.toggle('hover');">
+          <div class="container">
+            <div class="front" style="background-image: url(../img/free.jpg);">
+              <div class="inner">
+                <p>SKETCH</p>
+                <span> AUTO Club</span>
+              </div>
+            </div>
+            <div class="back">
+              <div class="inner">
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Alias cum repellat velit quae suscipit c.
+                </p>
+                <a href="tech.html"
+                  ><button type="button" class="button">Click Me!</button></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col" ontouchstart="this.classList.toggle('hover');">
+          <div class="container">
+            <div
+              class="front"
+              style="
+                background-image: url(https://unsplash.it/504/504/;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+              "
+            >
+              <div class="inner">
+                <p>WEB WORLD</p>
+                <span>Mozilla Club</span>
+              </div>
+            </div>
+            <div class="back">
+              <div class="inner">
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Alias cum repellat velit quae suscipit c.
+                </p>
+                <a href="tech.html"
+                  ><button type="button" class="button">Click Me!</button></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col" ontouchstart="this.classList.toggle('hover');">
+          <div class="container">
+            <div
+              class="front"
+              style="background-image: url(https://unsplash.it/505/505/);"
+            >
+              <div class="inner">
+                <p>COMIC CRUSADERS</p>
+                <span>English Club </span>
+              </div>
+            </div>
+            <div class="back">
+              <div class="inner">
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Alias cum repellat velit quae suscipit c.
+                </p>
+                <a href="tech.html"
+                  ><button type="button" class="button">Click Me!</button></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col" ontouchstart="this.classList.toggle('hover');">
+          <div class="container">
+            <div
+              class="front"
+              style="background-image: url(https://unsplash.it/506/506/);"
+            >
+              <div class="inner">
+                <p>TECHIE DEB</p>
+                <span>Debate and Anti Human trafficking club</span>
+              </div>
+            </div>
+            <div class="back">
+              <div class="inner">
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Alias cum repellat velit quae suscipit c.
+                </p>
+                <a href="tech.html"
+                  ><button type="button" class="button">Click Me!</button></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col" ontouchstart="this.classList.toggle('hover');">
+          <div class="container">
+            <div
+              class="front"
+              style="background-image: url(https://unsplash.it/508/508/);"
+            >
+              <div class="inner">
+                <p>EX-QUIZ ME</p>
+                <span>CDC</span>
+              </div>
+            </div>
+            <div class="back">
+              <div class="inner">
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Alias cum repellat velit quae suscipit c.
+                </p>
+                <a href="tech.html"
+                  ><button type="button" class="button">Click Me!</button></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="wrapper">
+      <div class="cols">
+        <div class="col" ontouchstart="this.classList.toggle('hover');">
+          <div class="container">
+            <div class="front" style="background-image: url(../img/free.jpg);">
+              <div class="inner">
+                <p>5 MT</p>
+                <span> ROTARACT </span>
+              </div>
+            </div>
+            <div class="back">
+              <div class="inner">
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Alias cum repellat velit quae suscipit c.
+                </p>
+                <a href="tech.html"
+                  ><button type="button" class="button">Click Me!</button></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col" ontouchstart="this.classList.toggle('hover');">
+          <div class="container">
+            <div class="front" style="url(../img/free.jpg)">
+              <div class="inner">
+                <p>FILMINA</p>
+                <span> Dance and Music Clubs </span>
+              </div>
+            </div>
+            <div class="back">
+              <div class="inner">
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Alias cum repellat velit quae suscipit c.
+                </p>
+                <a href="tech.html"
+                  ><button type="button" class="button">Click Me!</button></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col" ontouchstart="this.classList.toggle('hover');">
+          <div class="container">
+            <div class="front" style="background-image: url(../img/free.jpg);">
+              <div class="inner">
+                <p>AERO ZONE</p>
+                <span>Aero club</span>
+              </div>
+            </div>
+            <div class="back">
+              <div class="inner">
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Alias cum repellat velit quae suscipit c.
+                </p>
+                <a href="tech.html"
+                  ><button type="button" class="button">Click Me!</button></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col" ontouchstart="this.classList.toggle('hover');">
+          <div class="container">
+            <div class="front" style="background-image: url(../img/free.jpg);">
+              <div class="inner">
+                <p>AI workshop</p>
+                <span>Tamil Club and Microsoft Club</span>
+              </div>
+            </div>
+            <div class="back">
+              <div class="inner">
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Alias cum repellat velit quae suscipit c.
+                </p>
+                <a href="tech.html"
+                  ><button type="button" class="button">Click Me!</button></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="col" ontouchstart="this.classList.toggle('hover');">
+          <div class="container">
+            <div class="front" style="background-image: url(../img/free.jpg);">
+              <div class="inner">
+                <p>DAVINCI CODE</p>
+                <span>Design Club</span>
+              </div>
+            </div>
+            <div class="back">
+              <div class="inner">
+                <p>
+                  Lorem ipsum, dolor sit amet consectetur adipisicing elit.
+                  Alias cum repellat velit quae suscipit c.
+                </p>
+                <a href="tech.html"
+                  ><button type="button" class="button">Click Me!</button></a
+                >
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    particlesJS("particles-js", {
+      particles: {
+        number: {
+          value: 80,
+          density: {
+            enable: true,
+            value_area: 800,
+          },
+        },
+        color: {
+          value: ["#2EB67D", "#ECB22E", "#E01E5B", "#36C5F0"],
+        },
+        shape: {
+          type: ["circle"],
+          stroke: {
+            width: 0,
+            color: "#fff",
+          },
+          polygon: {
+            nb_sides: 5,
+          },
+          image: {
+            src:
+              "https://cdn.freebiesupply.com/logos/large/2x/slack-logo-icon.png",
+            width: 100,
+            height: 100,
+          },
+        },
+        opacity: {
+          value: 1,
+          random: false,
+          anim: {
+            enable: false,
+            speed: 1,
+            opacity_min: 0.1,
+            sync: false,
+          },
+        },
+        size: {
+          value: 8,
+          random: true,
+          anim: {
+            enable: false,
+            speed: 10,
+            size_min: 10,
+            sync: false,
+          },
+        },
+        line_linked: {
+          enable: true,
+          distance: 150,
+          color: "#808080",
+          opacity: 0.4,
+          width: 1,
+        },
+        move: {
+          enable: true,
+          speed: 5,
+          direction: "none",
+          random: false,
+          straight: false,
+          out_mode: "out",
+          bounce: false,
+          attract: {
+            enable: false,
+            rotateX: 600,
+            rotateY: 1200,
+          },
+        },
+      },
+      interactivity: {
+        detect_on: "canvas",
+        events: {
+          onhover: {
+            enable: true,
+            mode: "grab",
+          },
+          onclick: {
+            enable: true,
+            mode: "push",
+          },
+          resize: true,
+        },
+        modes: {
+          grab: {
+            distance: 140,
+            line_linked: {
+              opacity: 1,
+            },
+          },
+          bubble: {
+            distance: 400,
+            size: 40,
+            duration: 2,
+            opacity: 8,
+            speed: 3,
+          },
+          repulse: {
+            distance: 200,
+            duration: 0.4,
+          },
+          push: {
+            particles_nb: 4,
+          },
+          remove: {
+            particles_nb: 2,
+          },
+        },
+      },
+      retina_detect: true,
+    });
+  </script>
+</html>
