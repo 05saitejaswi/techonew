@@ -13,8 +13,8 @@ body {
   background: linear-gradient(to top left, #010101, #017DD2);
   background-size: cover;
   background-repeat: no-repeat;
-  background-position: center;
-  height: 100vh;
+  background-position: center center;
+  height: 100%;
 }
 canvas {
   position: absolute;
