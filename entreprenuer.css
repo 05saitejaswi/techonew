@@ -1,4 +1,4 @@
-* {
+/* * {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
@@ -12,11 +12,15 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   height: 100vh;
-}
-#particles-js {
+} */
+/* #particles-js {
   position: absolute;
   height: 100%;
   width: 100%;
+} */
+body {
+  background-color: black;
+  color: white;
 }
 .clearfix:after {
   content: ".";
@@ -249,22 +253,19 @@ h1 {
   }
 }
 
-
-.container{
+.container {
   width: 100%;
-  position: absolute;
+  position: relative;
   left: 50%;
   top: 20%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%, -50%);
   text-align: center;
   color: white;
-  
 }
-.count{
+.count {
   margin: 40px 0;
-
 }
-.countd{
+.countd {
   display: inline-block;
   width: 90px;
   height: 90px;
@@ -274,7 +275,7 @@ h1 {
   border-radius: 50%;
   overflow: hidden;
 }
-.countd span{
+.countd span {
   display: block;
   font-size: 30px;
   font-weight: bolder;
