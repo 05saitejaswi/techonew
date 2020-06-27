@@ -350,7 +350,7 @@ button:focus {
 .mu-about-area {
 	display: inline;
 	float: left;
-	padding: 100px 0;
+	padding: 10px 0;
 	width: 100%;
 }
 
@@ -398,7 +398,7 @@ button:focus {
 .mu-sponsors-area {
 	display: inline;
 	float: left;
-	padding: 100px 0;
+	padding: 20px 0 ;
 	width: 100%;
 }
 
@@ -434,7 +434,7 @@ button:focus {
 .mu-faq-area {
 	display: inline;
 	float: left;
-	padding: 150px 0;
+	padding: 15px 0;
 	width: 100%;
 }
 
