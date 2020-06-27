@@ -13,6 +13,7 @@ body {
   background: linear-gradient(to top left, #010101, #017DD2);
   background-size: cover;
   background-repeat: no-repeat;
+  background-attachment: fixed;
   background-position: center center;
   height: 100%;
 }
@@ -246,7 +247,7 @@ h1 {
 }
 @media only screen and (max-width: 998px) {
 body {
-  height: 100vh;
+  height: 100%;
 } 
   h1 {
     font-size: 200%;
@@ -254,7 +255,7 @@ body {
 }
 @media only screen and (max-width: 768px) {
   body {
-    height: 100vh;
+    height: 100%;
   } 
   h1 {
     font-size: 180%;
