@@ -1,4 +1,4 @@
-/* * {
+* {
   margin: 0px;
   padding: 0px;
   box-sizing: border-box;
@@ -12,14 +12,6 @@ body {
   background-repeat: no-repeat;
   background-position: center;
   height: 100vh;
-} */
-/* #particles-js {
-  position: absolute;
-  height: 100%;
-  width: 100%;
-} */
-body {
-  color: white;
 }
 .clearfix:after {
   content: ".";
