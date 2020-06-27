@@ -1,175 +1,32 @@
 <!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <title>Registration</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-      href="https://fonts.googleapis.com/css?family=Poppins&display=swap"
-      rel="stylesheet"
-    />
-    <link rel="stylesheet" href="css/bootstrap.min.css" />
-    <link rel="stylesheet" href="css/style.css" />
-  </head>
+<html lang="en">
 
-  <body>
-    <div id="particles-js">
-      <div class="main-content container-fluid">
-        <div class="row">
-          <div class="col-sm-3"></div>
-          <div class="col-sm-6">
-            <h1>Registration</h1>
-            <br />
-            <form role="form" name="registration" method="post">
-              <div class="form-group">
-                <h4>
-                  <strong> Name [To be entered in the Certificate] </strong>
-                </h4>
-                <input
-                  type="text"
-                  name="name"
-                  class="form-control"
-                  placeholder="Enter your Name"
-                  required="required"
-                />
-              </div>
-              <br />
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Registration</title>
 
-              <div class="form-group">
-                <h4>
-                  <strong> Email Address </strong>
-                </h4>
-                <input
-                  type="email"
-                  name="email"
-                  class="form-control"
-                  placeholder="Enter your Email Address"
-                  required="required"
-                />
-              </div>
-              <br />
+  <link rel="stylesheet" href="https://cdn.lineicons.com/1.0.1/LineIcons.min.css">
+  <link rel="stylesheet" href="css/registration.css">
+</head>
 
-              <div class="form-group">
-                <h4>
-                  <strong> Phone Number </strong>
-                </h4>
-                <input
-                  type="text"
-                  name="phone_number"
-                  class="form-control"
-                  placeholder="(Whatsapp Number preferably)"
-                  required="required"
-                />
-              </div>
-              <br />
-
-              <div class="form-group">
-                <h4>
-                  <strong> College </strong>
-                </h4>
-                <input
-                  type="text"
-                  name="college_name"
-                  class="form-control"
-                  placeholder="Enter Your College Name"
-                  required="required"
-                />
-              </div>
-              <br />
-
-              <div class="form-group">
-                <h4>
-                  <strong> Year </strong>
-                </h4>
-                <input
-                  type="text"
-                  name="year"
-                  class="form-control"
-                  placeholder="Which year are you in?"
-                  required="required"
-                />
-              </div>
-              <br />
-
-              <div class="form-group">
-                <h4>
-                  <strong> City </strong>
-                </h4>
-                <input
-                  type="text"
-                  name="city"
-                  class="form-control"
-                  placeholder="Enter your City"
-                  required="required"
-                />
-              </div>
-              <br />
-
-              <div class="form-group">
-                <h4>
-                  <strong> State </strong>
-                </h4>
-                <input
-                  type="text"
-                  name="state"
-                  class="form-control"
-                  placeholder="Enter your State"
-                  required="required"
-                />
-              </div>
-              <br />
-
-              <div class="form-group">
-                <h4>
-                  <strong> Screenshot </strong>
-                </h4>
-                <input
-                  type="file"
-                  name="screenshot"
-                  class="form-control"
-                  placeholder="Attach the Payment Screenshot"
-                  required="required"
-                />
-              </div>
-              <br />
-
-              <div class="form-group">
-                <h4>
-                  <strong> Transaction ID </strong>
-                </h4>
-                <input
-                  type="text"
-                  name="transaction id"
-                  class="form-control"
-                  placeholder="Enter the Transaction ID"
-                  required="required"
-                />
-              </div>
-              <br />
-
-              <div class="row">
-                <div class="col-sm-4"></div>
-                <div class="col-sm-4">
-                  <div class="form-group">
-                    <button
-                      type="submit"
-                      name="submit"
-                      class="btn btn-primary btn-xl"
-                      type="submit"
-                    >
-                      Complete&nbsp;Registration
-                    </button>
-                  </div>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
+<body>
+  <div class="container">
+    <h1 class="logo">Technosummit Registration</h1>
+    <div id="form-box">
+      <i id="prev-btn" class="lni-arrow-left"></i>
+      <i id="next-btn" class="lni-arrow-right"></i>
+      <div id="input-group">
+        <input id="input-field" required>
+        <label id="input-label"></label>
+        <div id="input-progress"></div>
       </div>
+      <div id="progress-bar"></div>
     </div>
-    <script src="js/bootstrap.min.js"></script>
-    <script src="js/particles.js"></script>
-    <script src="js/app.js"></script>
-  </body>
+  </div>
+
+  <script src="js/registration.js"></script>
+</body>
+
 </html>
