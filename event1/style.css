@@ -77,7 +77,35 @@ h6 {
 	margin-top: 0;
 }
 
-
+.btn {
+	color: #fff;
+	display: inline-block;
+	text-decoration: none;
+	text-transform: uppercase;
+	font-size: 100%;
+	font-weight: bolder;
+	padding: 10px 50px;
+	border-radius: 200px;
+	transition: background-color 0.2s, border 0.2s, color 0.2s;
+  }
+  .btn-first {
+	background-color: transparent;
+	color: white;
+	margin-right: 15px;
+	border: 1px solid #bf55ec;
+  }
+  .btn-first:hover {
+	background-color: #fff;
+  }
+  .btn-nav {
+	background-color: transparent;
+	color: #fff;
+	margin-right: 15px;
+	border: 1px solid #fff;
+  }
+  .btn-nav:hover {
+	background-color: #bf55ec;
+  }
 h1 {
 	font-size: 38px;
 }
