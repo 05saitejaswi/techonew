@@ -12,7 +12,7 @@ body{
     justify-content: center;
     background: radial-gradient(#1b2735 0%, #090a0f 100vh);
     color: white;
-    overflow: hidden;
+    overflow-x: hidden;
 }
 
 .click{
