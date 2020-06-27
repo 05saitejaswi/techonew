@@ -1,0 +1,158 @@
+@import url("https://fonts.googleapis.com/css?family=Montserrat:400,600,900&display=swap");
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  outline: 0;
+}
+
+html,
+body,
+.container {
+  height: 100%;
+}
+
+body {
+  font-family: 'Montserrat', sans-serif;
+}
+
+.container {
+  background: #010101;
+  background: -webkit-linear-gradient(top left, #010101, #017DD2);
+  background: -moz-linear-gradient(top left, #010101, #017DD2);
+  background: linear-gradient(to bottom right, #010101, #017DD2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+h1.logo {
+  color: #fff;
+  font-size: 36px;
+  text-transform: uppercase;
+}
+
+#form-box {
+  margin-top: 30px;
+  background-color: #fff;
+  position: relative;
+  width: 600px;
+  border-radius: 5px 5px 0 0;
+  box-shadow: 0 10px 30px 0 rgba(0, 0, 0, 0.2);
+  transition: transform .1s ease-in-out;
+}
+
+h1.end {
+  margin-top: -100px;
+  text-align: center;
+  width: 80%;
+  font-size: 30px;
+  font-weight: 600;
+  color: #fff;
+  opacity: 0;
+  transition: 0.8s ease-in-out;
+}
+
+#form-box.close {
+  width: 0;
+  padding: 0;
+  overflow: hidden;
+  transition: .8s ease-in-out;
+  box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+}
+
+#next-btn {
+  position: absolute;
+  right: 20px;
+  bottom: 11px;
+  font-size: 40px;
+  color: #11998e;
+  float: right;
+  cursor: pointer;
+  z-index: 2;
+}
+#next-btn:hover {
+  color: #57ece0;
+}
+
+#prev-btn {
+  position: absolute;
+  left: 30px;
+  top: 12px;
+  font-size: 18px;
+  color: #9e9e9e;
+  float: right;
+  cursor: pointer;
+  z-index: 2;
+}
+#prev-btn:hover {
+  color: #57ece0;
+}
+
+#input-group {
+  position: relative;
+  padding: 30px 20px 20px 20px;
+  margin: 10px 60px 10px 10px;
+  opacity: 0;
+  transition: opacity 0.3 ease-in-out;
+}
+#input-group input {
+  position: relative;
+  width: 100%;
+  border: none;
+  font-size: 20px;
+  font-weight: 600;
+  outline: 0;
+  background: transparent;
+  box-shadow: none;
+}
+#input-group #input-label {
+  position: absolute;
+  pointer-events: none;
+  top: 32px;
+  left: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  transition: .2 ease-in-out;
+}
+#input-group input:valid + #input-label {
+  top: 2px;
+  left: 42px;
+  font-size: 14px;
+  color: #9e9e9e;
+  font-weight: 400;
+}
+
+#input-progress {
+  margin-top: 3px;
+  border-bottom: 3px solid #11998e;
+  width: 0;
+  transition: width .6s ease-in-out;
+}
+
+#progress-bar {
+  position: absolute;
+  background: #57ece0;
+  height: 10px;
+  width: 0;
+  transition: width .5s ease-in-out;
+}
+
+.close #next-btn,
+.close #prev.btn {
+  color: #fff;
+}
+
+.error #input-progress {
+  border-color: #FF2D26;
+}
+.error #next-btn {
+  color: #FF2D26;
+}
+
+@media (max-width: 600px) {
+  #form-box {
+    width: 80%;
+  }
+}
