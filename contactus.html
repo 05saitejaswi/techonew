@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <style>
+    body{  
+  margin: 0;
+  padding: 0;
+  background-image: linear-gradient(to right, gray , skyblue);
+  height: 200px;
+}
+.middle{
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+.btn{
+  position: relative;
+  display: block;
+  color: white;
+  font-size: 14px;
+  font-family: "montserrat";
+  text-decoration: none;
+  margin: 30px 0;
+  border: 4px solid #ff7675;
+  padding: 14px 60px;
+  text-transform: uppercase;
+  overflow: hidden;
+  transition: 1s all ease;
+}
+.btn::before{
+  background: #24c2e9;
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  z-index: -1;
+  transition: all 0.6s ease;
+}
+
+.btn3::before{
+  width: 100%;
+  height: 0%;
+  transform: translate(-50%,-50%) rotate(45deg);
+}
+.btn3:hover::before{
+  height: 380%;
+}
+.btn2{
+    background-color: #ff7675;
+}
+
+    </style>
+  </head>
+  <body>
+   
+    <div class="middle">
+        <center> <h1  style="
+            font-size: 100px;
+            font-family:BrushScript MT ;
+            color: aliceblue;
+            text-shadow: 1px 4px rgb(36, 148, 46);
+          ">contact us</h1></center>
+        <center>
+      <a role="button" class="btn btn3" href="tel:+85212345678"><i class="fa fa-phone"></i> Call</a>
+    </center>
+<center> <a role="button" class="btn btn3" href="mailto:confusion@food.net"><i class="fa fa-envelope-o"></i> Email</a>
+</center>
+       <h1>Our Address</h1>
+                <address style="font-size: 100%">
+                   guntur,Ap,india<br>
+                 <h3> <i class="fa fa-phone"></i>: +91 9550429504</h3><br>
+                   <h3><i class="fa fa-fax"></i>: +91 6305341778 <h3><br>
+                   <h3><i class="fa fa-envelope"></i>:saitejaswi.chakravaram05@gmail.com</a>
+               </address>
+               <center>
+                <a role="button" class="btn btn2" href="nav.html"> click Here</a>
+              </center>
+    </div>
+  </body>
+  
+</html>
