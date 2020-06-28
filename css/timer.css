@@ -18,10 +18,7 @@
     padding: 15px;
     border-radius: 3px;
 
-    background: #CE626B;
-    background: -webkit-linear-gradient(top left, #CE626B, #DD364D);
-    background: -moz-linear-gradient(top left, #CE626B, #DD364D);
-    background: linear-gradient(to bottom right, #CE626B, #DD364D);
+    background-color: red;
     display: inline-block;
     border-bottom: 1px solid white;
   }

@@ -1,142 +1,77 @@
-//Questions
-const questions = [
-    { question: 'Name' },
-    { question: 'Email Address', pattern: /\S+@\S+\.\S+/ },
-    { question: 'Phone Number' },
-    { question: 'College/Institution Name?' },
-    { question: 'Year' },
-    { question: 'City' },
-    { question: 'State' },
-    { question: 'Event Name' },
-    { question: '', type: 'file', style: 'text-align:right', placeholer: '' },
-    { question: 'Transaction ID' }
-];
+//jQuery time
+var current_fs, next_fs, previous_fs; //fieldsets
+var left, opacity, scale; //fieldset properties which we will animate
+var animating; //flag to prevent quick multi-click glitches
 
-//Transitions time
-const shakeTime = 100;
-const switchTime = 200;
+$(".next").click(function () {
+    if (animating) return false;
+    animating = true;
 
-//Initial Question Position:
-let position = 0;
+    current_fs = $(this).parent();
+    next_fs = $(this).parent().next();
 
-//Dom Elements
+    //activate next step on progressbar using the index of next_fs
+    $("#progressbar li").eq($("fieldset").index(next_fs)).addClass("active");
 
-const formBox = document.querySelector('#form-box');
-const prevBtn = document.querySelector('#prev-btn');
-const nextBtn = document.querySelector('#next-btn');
-const inputGroup = document.querySelector('#input-group');
-const inputField = document.querySelector('#input-field');
-const inputLabel = document.querySelector('#input-label');
-const inputProgress = document.querySelector('#input-progress');
-const progress = document.querySelector('#progress-bar');
-
-//Events
-
-document.addEventListener('DOMContentLoaded', getQuestion);
-
-nextBtn.addEventListener('click', validate);
-
-inputField.addEventListener('keyup', e => {
-    if (e.keyCode == 13) {
-        validate();
-    }
+    //show the next fieldset
+    next_fs.show();
+    //hide the current fieldset with style
+    current_fs.animate({ opacity: 0 }, {
+        step: function (now, mx) {
+            //as the opacity of current_fs reduces to 0 - stored in "now"
+            //1. scale current_fs down to 80%
+            scale = 1 - (1 - now) * 0.2;
+            //2. bring next_fs from the right(50%)
+            left = (now * 50) + "%";
+            //3. increase opacity of next_fs to 1 as it moves in
+            opacity = 1 - now;
+            current_fs.css({
+                'transform': 'scale(' + scale + ')',
+                'position': 'absolute'
+            });
+            next_fs.css({ 'left': left, 'opacity': opacity });
+        },
+        duration: 800,
+        complete: function () {
+            current_fs.hide();
+            animating = false;
+        },
+        //this comes from the custom easing plugin
+        easing: 'easeInOutBack'
+    });
 });
 
-prevBtn.addEventListener("click", () => {
-    position = position - 1;
-    getQuestion();
+$(".previous").click(function () {
+    if (animating) return false;
+    animating = true;
+
+    current_fs = $(this).parent();
+    previous_fs = $(this).parent().prev();
+
+    //de-activate current step on progressbar
+    $("#progressbar li").eq($("fieldset").index(current_fs)).removeClass("active");
+
+    //show the previous fieldset
+    previous_fs.show();
+    //hide the current fieldset with style
+    current_fs.animate({ opacity: 0 }, {
+        step: function (now, mx) {
+            //as the opacity of current_fs reduces to 0 - stored in "now"
+            //1. scale previous_fs from 80% to 100%
+            scale = 0.8 + (1 - now) * 0.2;
+            //2. take current_fs to the right(50%) - from 0%
+            left = ((1 - now) * 50) + "%";
+            //3. increase opacity of previous_fs to 1 as it moves in
+            opacity = 1 - now;
+            current_fs.css({ 'left': left });
+            previous_fs.css({ 'transform': 'scale(' + scale + ')', 'opacity': opacity });
+        },
+        duration: 800,
+        complete: function () {
+            current_fs.hide();
+            animating = false;
+        },
+        //this comes from the custom easing plugin
+        easing: 'easeInOutBack'
+    });
 });
-
-
-//Functions
-
-function getQuestion() {
-    inputLabel.innerHTML = questions[position].question;
-
-    inputField.type = questions[position].type || 'text';
-
-    inputField.value = questions[position].answer || '';
-
-    inputField.focus();
-
-    progress.style.width = (position * 100) / questions.length + '%';
-
-    prevBtn.className = position ? 'lni-arrow-left' : 'lni-user';
-
-    showQuestion();
-}
-
-function showQuestion() {
-    inputGroup.style.opacity = 1;
-    inputProgress.style.transition = '';
-    inputProgress.style.width = '100%'
-}
-
-function hideQuestion() {
-    inputGroup.style.opacity = 0;
-    inputProgress.style.transition = 'none';
-    inputProgress.style.width = 0;
-    inputLabel.style.marginLeft = 0;
-    inputGroup.style.border = null;
-}
-
-function transform(x, y) {
-    formBox.style.transform = `translate(${x}px, ${y}px)`;
-}
-
-function validate() {
-    if (!inputField.value.match(questions[position].pattern || /.+/)) {
-        inputFail();
-    } else {
-        inputPass();
-    }
-}
-
-function inputFail() {
-    formBox.className = 'error';
-
-    for (let i = 0; i < 6; i++) {
-        setTimeout(transform, shakeTime * i, ((i % 2) * 2 - 1) * 20, 0);
-
-        setTimeout(transform, shakeTime * 6, 0, 0);
-
-        inputField.focus();
-    }
-}
-
-function inputPass() {
-    formBox.className = '';
-
-    setTimeout(transform, shakeTime * 0, 0, 10);
-    setTimeout(transform, shakeTime * 1, 0, 0);
-
-    questions[position].answer = inputField.value;
-
-    position++;
-
-    if (questions[position]) {
-        hideQuestion();
-        getQuestion();
-    } else {
-        hideQuestion();
-        formBox.className = 'close';
-        progress.style.width = '100%';
-
-        formComplete();
-    }
-}
-
-function formComplete() {
-    const h1 = document.createElement('h1');
-    h1.classList.add('end');
-    h1.appendChild(
-        document.createTextNode(
-            `Thank you for registering ${questions[0]
-                .answer}. Hope to see you at the event!`
-        )
-    );
-    setTimeout(() => {
-        formBox.parentElement.appendChild(h1);
-        setTimeout(() => (h1.style.opacity = 1), 50);
-    }, 1000);
-}
