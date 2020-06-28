@@ -4,6 +4,7 @@
     <meta charset="utf-8">
     <title></title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.2/animate.min.css" />
     <style>
     body{  
   margin: 0;
@@ -25,19 +26,34 @@
   cursor: pointer;
 }
 
-.btn2{
-  background-color: #e7e7e7;
-   color: black;
-   border-radius: 12px;
-  border: none;
-  color: rgb(112, 17, 17);
-  /* padding: 20px; */
-  text-align: center;
-  text-decoration: none;
+.btn {
+  color: #fff;
   display: inline-block;
-  font-size: 50px;
-  /* margin: 4px 2px; */
-  cursor: pointer;
+  text-decoration: none;
+  text-transform: uppercase;
+  font-size: 300%;
+  font-weight: 100px;
+  padding: 10px 30px;
+  border-radius: 200px;
+  transition: background-color 0.2s, border 0.2s, color 0.2s;
+}
+.btn-first {
+  background-color: transparent;
+  color: #bf55ec;
+  margin-right: 15px;
+  border: 4px solid #bf55ec;
+}
+.btn-first:hover {
+  background-color: #fff;
+}
+.btn-nav {
+  background-color: transparent;
+  color: #fff;
+  margin-right: 15px;
+  border: 1px solid #fff;
+}
+.btn-nav:hover {
+  background-color: #bf55ec;
 }
 .button4 {border-radius: 400px;}
 h1{
@@ -56,10 +72,10 @@ h1{
           ">CONTACT US</h1></center>
          
 <center>
-      <a role="button" class="button button4" href="tel:+91 8939224200 "><i class="fa fa-phone"></i>Call</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+      <a role="button" class="button button4 animated jello"  href="tel:+91 8939224200 "><i class="fa fa-phone"></i>Call</a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
     
   
-<a role="button" class="button button4" href="mailto:info@gmail.com"><i class="fa fa-envelope-o"></i> Email</a>
+<a role="button" class="button button4 animated jello" href="mailto:info@gmail.com"><i class="fa fa-envelope-o"></i> Email</a>
 </center>
     <center>
                 <address style="font-size: 100%">
@@ -70,7 +86,7 @@ h1{
             </address>
               </center>
               <center>
-                <a role="button" class="  btn2" href="nav.html"> click Here</a>
+                <a href="nav.html" class="btn btn-first">Click Here</a>
               </center>
   </body>
   
