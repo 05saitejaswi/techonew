@@ -1,8 +1,6 @@
 <?php
 
-$con = mysqli_connect('localhost', 'root');
-mysqli_select_db($con, 'tk20');
-
+$con = mysqli_connect('localhost','root','','tk20');
 function e($val)
 {
     global $con;
@@ -97,15 +95,15 @@ if (isset($_POST['submit'])) {
         <fieldset>
             <h2 class="fs-title">Contact Info</h2>
             <h3 class="fs-subtitle">This is to send certifcates. All the fields are required.</h3>
-            <input type="text" name="r_name" placeholder="Name" required />
+            <input type="text" name="r_name" placeholder="Name" required onkeypress="return allowOnlyAlphabets(event)" />
             <input type="email" name="r_email" placeholder="Email Address" required />
-            <input type="text" name="r_phone" placeholder="Phone Number" minlength="10" maxlength="10" required />
+            <input type="text" name="r_phone" placeholder="Phone Number" minlength="10" maxlength="10" required onkeypress="return restrictAlphabets(event)" />
             <input type="button" name="next" class="next action-button" value="Next" />
         </fieldset>
 
         <fieldset>
             <h2 class="fs-title">College Details</h2><br>
-            <input type="text" name="r_college" placeholder="College" required />
+            <input type="text" name="r_college" placeholder="College" required onkeypress="return allowAlphabets(event)" />
             <select name="r_year" required>
                 <option>Select Year </option>
                 <option value="1">First Year </option>
@@ -119,8 +117,8 @@ if (isset($_POST['submit'])) {
 
         <fieldset>
             <h2 class="fs-title">Location Details</h2><br>
-            <input type="text" name="r_city" placeholder="City" required />
-            <input type="text" name="r_state" placeholder="State" required />
+            <input type="text" name="r_city" placeholder="City" required onkeypress="return allowOnlyAlphabets(event)" />
+            <input type="text" name="r_state" placeholder="State" required onkeypress="return allowOnlyAlphabets(event)"/>
             <select name="r_event" required>
                 <option>Select Event</option>
                 <option value="1">ROBOKART</option>
@@ -151,7 +149,7 @@ if (isset($_POST['submit'])) {
 
         <fieldset>
             <h2 class="fs-title">Payment Details</h2>
-            <h3 class="fs-subtitle"></h3>
+            <h3 class="fs-subtitle">Attach the Screenshot of the Payment and Enter the Transaction ID</h3>
             <input type="file" name="r_screenshot" placeholder="Attach payment Screenshot" required />
             <input type="text" name="r_trn_id" placeholder="Transaction ID" required />
             <input type="button" name="previous" class="previous action-button" value="Previous" />
