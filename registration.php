@@ -7,9 +7,20 @@ function e($val)
     return mysqli_real_escape_string($con, trim($val));
 }
 
+function getID() {
+    global $con;
+    $sql = "SELECT (id+1) as fid FROM eve_reg ORDER BY id DESC LIMIT 1;";
+    $result = mysqli_query($con,$sql);
+    $row = mysqli_fetch_assoc($result);
+    $fid = $row["fid"];
+    return (string)$fid.".";
+}
+
 if (isset($_POST['submit'])) {
 
     $files = $_FILES['r_screenshot'];
+
+    $r_salutation = $_POST['r_salutation'];
 
     $r_name = $_POST['r_name'];
     $r_name = e($r_name);
@@ -22,6 +33,7 @@ if (isset($_POST['submit'])) {
 
     $r_college = $_POST['r_college'];
     $r_college = e($r_college);
+    $r_college = strtoupper($r_college);
 
     $r_year = $_POST['r_year'];
     $r_year = (int) $r_year;
@@ -43,6 +55,7 @@ if (isset($_POST['submit'])) {
     //SQL Query : 
 
     $filename = $files['name'];
+
     $fileerror = $files['error'];
     $filetmp = $files['tmp_name'];
 
@@ -53,15 +66,17 @@ if (isset($_POST['submit'])) {
 
     if (in_array($filecheck, $fileextstored)) {
 
-        $destinationfile = 'upload/' . $filename;
+        //$destinationfile = 'upload/' . $filename;
+
+        $destinationfile = 'upload/'.$r_email.'_e_'.(string)($r_event). $filecheck;
         move_uploaded_file($filetmp, $destinationfile);
-        $insertQuery = "INSERT INTO eve_reg (r_name,r_email,r_phone,r_college,r_year,r_city,r_state,r_event,r_screenshot,r_trn_id) VALUES ('$r_name','$r_email','$r_phone','$r_college','$r_year','$r_city','$r_state','$r_event','$destinationfile','$r_trn_id')";
+        $insertQuery = "INSERT INTO eve_reg (r_salutation,r_name,r_email,r_phone,r_college,r_year,r_city,r_state,r_event,r_screenshot,r_trn_id) VALUES ('$r_salutation','$r_name','$r_email','$r_phone','$r_college','$r_year','$r_city','$r_state','$r_event','$destinationfile','$r_trn_id')";
         $query = mysqli_query($con, $insertQuery);
         if ($query) {
             echo "<script>alert('Form has been submitted!'); window.location.href = 'nav.html';</script>";
         }
     } else {
-        echo "Extension is not matching.";
+        echo "<script>alert('Select an Image File!');</script>";
     }
 }
 ?>
@@ -95,6 +110,11 @@ if (isset($_POST['submit'])) {
         <fieldset>
             <h2 class="fs-title">Contact Info</h2>
             <h3 class="fs-subtitle">This is to send certifcates. All the fields are required.</h3>
+            <select name="r_salutation" required>
+                <option>Select Title </option>
+                <option value="1"> Mr. </option>
+                <option value="2">Ms. </option>
+            </select>
             <input type="text" name="r_name" placeholder="Name" required onkeypress="return allowOnlyAlphabets(event)" />
             <input type="email" name="r_email" placeholder="Email Address" required />
             <input type="text" name="r_phone" placeholder="Phone Number" minlength="10" maxlength="10" required onkeypress="return restrictAlphabets(event)" />
@@ -151,9 +171,10 @@ if (isset($_POST['submit'])) {
             <h2 class="fs-title">Payment Details</h2>
             <h3 class="fs-subtitle">Attach the Screenshot of the Payment and Enter the Transaction ID</h3>
             <input type="file" name="r_screenshot" placeholder="Attach payment Screenshot" required />
-            <input type="text" name="r_trn_id" placeholder="Transaction ID" required />
+            <input type="text" id="r_trn_id" name="r_trn_id" placeholder="Transaction ID" required oninput="checkAvailability()"/><br>
+            <span id="check-availability-status" style="font-size:12px;"></span><br>
             <input type="button" name="previous" class="previous action-button" value="Previous" />
-            <input type="submit" name="submit" class="submit action-button" value="Submit" />
+            <input type="submit" id="submit" name="submit" class="submit action-button" value="Submit" />
         </fieldset>
 
     </form>
