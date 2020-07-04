@@ -94,9 +94,38 @@ if (isset($_POST['submit'])) {
 <body>
     <!-- partial:index.partial.html -->
     <!-- multistep form -->
-    <h1 class="logo">Technosummit Registration</h1>
+    <h1 class="logo">Technosummit</h1>
+    <h1 class="logo">Registration</h1>
 
-    <center><a href="nav.html" class="home">Home</a></center>
+    <div class="account">
+        <h2 class="fs-title">Account Details for Payment</h2>
+        <table style="border: black 1px solid;">
+            <tr style="border: black 1px solid; padding:5px;">
+                <th style="border-right: black 1px solid;  padding:5px;">Name</th>
+                <td style="padding:5px;">DEAN STUDENT - SATHYABAMA</td>
+            </tr>
+            <tr style="border: black 1px solid; padding:5px;">
+                <th style="border-right: black 1px solid;  padding:5px;">Account Number</th>
+                <td style="padding:5px;">6624554163</td>
+            </tr>
+            <tr style="border: black 1px solid; padding:5px;">
+                <th style="border-right: black 1px solid;  padding:5px;"> IFSC Code </th>
+                <td style="padding:5px;"> IDIB000S201 </td>
+            </tr>
+            <tr style="border: black 1px solid; padding:5px;">
+                <th style="border-right: black 1px solid;  padding:5px;"> Branch </th>
+                <td style="padding:5px;"> Sathyabama University </td>
+            </tr>
+            <tr style="border: black 1px solid; padding:5px;">
+                <th style="border-right: black 1px solid;  padding:5px;"> Branch Code </th>
+                <td style="padding:5px;"> 02189 </td>
+            </tr>
+        </table>
+    </div>
+
+    <br><br>
+    <center><a href="about.html" class="home">Events</a></center>
+
     <form id="msform" method="post" enctype="multipart/form-data" action="registration.php">
         <!-- progressbar -->
         <ul id="progressbar">
@@ -119,6 +148,7 @@ if (isset($_POST['submit'])) {
             <input type="email" name="r_email" placeholder="Email Address" required />
             <input type="text" name="r_phone" placeholder="Phone Number" minlength="10" maxlength="10" required onkeypress="return restrictAlphabets(event)" />
             <input type="button" name="next" class="next action-button" value="Next" />
+
         </fieldset>
 
         <fieldset>
@@ -178,6 +208,7 @@ if (isset($_POST['submit'])) {
         </fieldset>
 
     </form>
+
     <!-- partial -->
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
     <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js'></script>
