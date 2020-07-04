@@ -22,7 +22,21 @@ function allowAlphabets(e) {
         return false;
 }
 
--//jQuery time
+function checkAvailability() {
+    $("#loaderIcon").show();
+    jQuery.ajax({
+        url: "check_availability.php",
+        data: 'r_trn_id=' + $("#r_trn_id").val(),
+        type: "POST",
+            success: function(data) {
+                $("#check-availability-status").html(data);
+                $("#loaderIcon").hide();
+        },
+        error: function() {}
+    });
+}
+
+//jQuery time
 var current_fs, next_fs, previous_fs; //fieldsets
 var left, opacity, scale; //fieldset properties which we will animate
 var animating; //flag to prevent quick multi-click glitches
