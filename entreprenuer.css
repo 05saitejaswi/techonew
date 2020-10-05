@@ -201,6 +201,12 @@ h1 {
   margin-right: 15px;
   border: 1px solid #bf55ec;
 }
+.btn-first {
+  background-color: red;
+  color: white;
+  margin-right: 15px;
+  border: 1px solid #bf55ec;
+}
 .btn-first:hover {
   background-color: #fff;
 }
@@ -238,7 +244,7 @@ h1 {
 /* for animation ANIMATE.COM is the one */
 
 /*/////////// RESPONSIVE QUERIES//////////*/
-
+/// perfect responsiveness
 @media only screen and (max-width: 1180px) {
   .main-header {
     width: 100%;
